@@ -16,7 +16,7 @@ export default async function List() {
                         <Link href={'/detail/'+ data._id}>
                         <h4> {data.title} </h4>
                         </Link>
-                        <DetailLink id={data._id}/>
+                        <DetailLink id={data._id.toString()}/>
                     
                     <p>{data.content}</p>
                 </div>

@@ -1,4 +1,4 @@
-import { connectDB } from "../../app/util/database";
+import { connectDB } from "@/app/util/database";
 export default async function List(request, response) {
     const client = await connectDB;
     const db = client.db('forum');

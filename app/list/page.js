@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { connectDB } from "../util/database";
+import { connectDB } from "@/app/util/database";
 import DetailLink from "./DetailLink";
 
 

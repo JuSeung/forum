@@ -1,8 +1,9 @@
 import { connectDB } from '@/app/util/database';
+import { ObjectId } from 'mongodb';
 export default async function handler(request, response) {
   if (request.method === 'POST') {
-    const { title, content } = request.body;
-
+    const { id, title, content } = request.body;
+    console.log(`id : ${id} title : ${title} content : ${content}`);
     if (title == '') {
       return response.status(500).json('no title');
     }
@@ -13,10 +14,9 @@ export default async function handler(request, response) {
       const client = await connectDB;
       const db = client.db('forum');
       const collection = db.collection('post');
-      await collection.insertOne({
-        title,
-        content,
-      });
+
+      await collection.updateOne({ _id: new ObjectId(id) }, { $set: { title: title, content: content } });
+
       return response.redirect(302, '/list');
     } catch (error) {
       console.error('system error');

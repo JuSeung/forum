@@ -1,17 +1,15 @@
-"use client";
+'use client';
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function DetailLink(props) {
   let router = useRouter();
   return (
-    <button
+    <a
       onClick={() => {
-        router.push("/detail/" + props.id);
+        router.push('/detail/' + props.id);
       }}
-    >
-      버튼
-    </button>
+    ></a>
   );
 
   // router.push  페이지이동이 가능합니다.

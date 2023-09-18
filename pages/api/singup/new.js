@@ -1,25 +1,25 @@
-import { connectDB } from "@/app/util/database";
+import { connectDB } from '@/app/util/database';
 export default async function handler(request, response) {
-  if (request.method === "POST") {
+  if (request.method === 'POST') {
     const { id, password } = request.body;
 
-    if (id == "") {
-      return response.status(500).json("no Id");
+    if (id == '') {
+      return response.status(500).json('no Id');
     }
-    if (password == "") {
-      return response.status(500).json("no password");
+    if (password == '') {
+      return response.status(500).json('no password');
     }
     try {
       const client = await connectDB;
-      const db = client.db("forum");
-      const collection = db.collection("member");
+      const db = client.db('forum');
+      const collection = db.collection('member');
       await collection.insertOne({
         id,
         password,
       });
-      return response.redirect(302, "/");
+      return response.redirect(302, '/');
     } catch (error) {
-      console.error("system error");
+      console.error('system error');
       return response.status(500).end();
     }
   }
